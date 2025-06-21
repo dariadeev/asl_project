@@ -22,9 +22,9 @@ class WNBModule(pl.LightningModule):
     def __init__(self, num_classes: int = NUM_CLASSES_ASL, learning_rate: float = 1e-3):
         super().__init__()
         self.save_hyperparameters()
-        self.model = models.resnet18(pretrained=False)
-        num_ftrs = self.model.fc.in_features
-        self.model.fc = nn.Linear(num_ftrs, num_classes)
+        self.backbone = models.resnet18(pretrained=False)
+        num_ftrs = self.backbone.fc.in_features
+        self.backbone.fc = nn.Linear(num_ftrs, num_classes)
         self.criterion = nn.CrossEntropyLoss()
         self.train_acc = Accuracy(task="multiclass", num_classes=num_classes)
         self.val_acc = Accuracy(task="multiclass", num_classes=num_classes)
@@ -34,9 +34,9 @@ class WNBModule(pl.LightningModule):
         self.test_precision = Precision(task="multiclass", num_classes=num_classes, average='weighted')
 
     def forward(self, x):
-        self.model.eval()
+        self.backbone.eval()
         with torch.no_grad():
-            return self.model(x)
+            return self.backbone(x)
 
     def configure_optimizers(self):
         return None
