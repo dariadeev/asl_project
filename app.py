@@ -151,7 +151,7 @@ if uploaded_files:
 
     full_word = ''.join(predictions)
 
-    st.subheader("🄤 Predicted Word:")
+    st.subheader("🔤 Predicted Word:")
     st.success(f"**{full_word}**")
 
     st.subheader("🧠 Letter Predictions:")
