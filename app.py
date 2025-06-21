@@ -151,14 +151,14 @@ if uploaded_files:
 
     full_word = ''.join(predictions)
 
-    st.subheader("🄤 Predicted Word:")
+    st.subheader("🔤 Predicted Word:")
     st.success(f"**{full_word}**")
 
     st.subheader("🧠 Letter Predictions:")
     for i, (letter, conf) in enumerate(zip(predictions, confidences)):
         st.write(f"**{letter}** — Confidence: {conf}")
         if st.checkbox(f"Show image for letter {i+1} ({letter})", key=f"img_{i}"):
-            st.image(show_images[i], caption=f"Predicted: {letter} | Confidence: {conf}", use_column_width=True)
+            st.image(show_images[i], caption=f"Predicted: {letter} | Confidence: {conf}", width=150)
 
 # --- Sidebar Info ---
 st.sidebar.header("ℹ️ About")
@@ -168,6 +168,7 @@ st.sidebar.info(
     "- Order matters (first letter uploaded = first letter predicted)\n"
 )
 st.sidebar.write(f"Supported classes: {NUM_CLASSES_ASL}")
+
 
 
 # import streamlit as st
