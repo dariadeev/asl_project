@@ -156,9 +156,13 @@ if uploaded_files:
 
     st.subheader("🧠 Letter Predictions:")
     for i, (letter, conf) in enumerate(zip(predictions, confidences)):
-        st.write(f"**{letter}** — Confidence: {conf}")
-        if st.checkbox(f"Show image for letter {i+1} ({letter})", key=f"img_{i}"):
-            st.image(show_images[i], caption=f"Predicted: {letter} | Confidence: {conf}", width=250)
+        col1, col2 = st.columns([3, 1])
+        with col1:
+            st.write(f"**{letter}** — Confidence: {conf}")
+        with col2:
+            if st.checkbox(f"Show", key=f"img_{i}"):
+                st.image(show_images[i], caption=f"Predicted: {letter} | Confidence: {conf}", width=150)
+            st.image(show_images[i], caption=f"Predicted: {letter} | Confidence: {conf}", width=150)
 
 # --- Sidebar Info ---
 st.sidebar.header("ℹ️ About")
@@ -168,6 +172,7 @@ st.sidebar.info(
     "- Order matters (first letter uploaded = first letter predicted)\n"
 )
 st.sidebar.write(f"Supported classes: {NUM_CLASSES_ASL}")
+
 
 
 
