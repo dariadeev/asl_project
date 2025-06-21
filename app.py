@@ -66,7 +66,7 @@ def load_model_state_dict(model_state_dict_path, num_classes):
 
     st.write(f"Loading model state dict: {model_state_dict_path}")
     try:
-        model = WNBModule(num_classes=num_classes)
+        model = WNBModule(num_classes=30)  # Force model to expect 30 output classes
         state_dict = torch.load(model_state_dict_path, map_location=torch.device('cpu'))
         model.load_state_dict(state_dict)
         model.eval()
@@ -166,6 +166,7 @@ st.sidebar.info(
     "- Order matters (first letter uploaded = first letter predicted)\n"
 )
 st.sidebar.write(f"Supported classes: {NUM_CLASSES_ASL}")
+
 
 
 # import streamlit as st
