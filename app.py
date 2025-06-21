@@ -161,7 +161,7 @@ if uploaded_files:
             st.write(f"**{letter}** — Confidence: {conf}")
         with col2:
             if st.checkbox(f"Show", key=f"img_{i}"):
-                st.image(show_images[i], caption=f"Predicted: {letter} | Confidence: {conf}", width=150)
+                
             st.image(show_images[i], caption=f"Predicted: {letter} | Confidence: {conf}", width=150)
 
 # --- Sidebar Info ---
@@ -172,8 +172,6 @@ st.sidebar.info(
     "- Order matters (first letter uploaded = first letter predicted)\n"
 )
 st.sidebar.write(f"Supported classes: {NUM_CLASSES_ASL}")
-
-
 
 
 # import streamlit as st
