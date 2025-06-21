@@ -58,44 +58,6 @@ import wandb
 
 print("Libraries installed and imported.")
 
-# # %%
-# # Cell 4: Download and Unzip the ASL dataset
-# # IMPORTANT: Make sure kaggle.json is already uploaded to /content/
-
-# !mkdir -p ~/.kaggle
-# !cp kaggle.json ~/.kaggle/
-# !chmod 600 ~/.kaggle/kaggle.json
-
-# print("Kaggle setup complete. Downloading dataset...")
-# !kaggle datasets download -d grassknoted/asl-alphabet -p /content/
-
-# # --- KEY MODIFICATION HERE ---
-# # We will extract directly into '/content/data'
-# # Make sure DEST_ROOT is defined earlier if used elsewhere.
-# # Or define it here if this is the only usage.
-# extract_path_for_unzip = '/content/data/'  # <--- NEW EXTRACTION PATH
-
-# # Create the destination folder if it doesn't already exist
-# # Normally created by Cell 5, but we ensure it here just in case.
-# import os  # Make sure os is imported
-# os.makedirs(extract_path_for_unzip, exist_ok=True)
-
-# zip_file_path = '/content/asl_data.zip'
-
-# print(f"Unzipping {zip_file_path} to {extract_path_for_unzip}...")
-# with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
-#     # Extract everything. The folder 'asl_alphabet_train' will be created directly under '/content/data/'
-#     zip_ref.extractall(extract_path_for_unzip)
-# print("Unzipping complete.")
-
-# # --- POST-UNZIP CHECKS ADJUSTED ---
-# print("\n--- Verifying extracted files ---")
-# !ls -lh {zip_file_path}  # Should show the size of the zip file
-# # Now the folder 'asl_alphabet_train' should be directly under /content/data/
-# !ls -lh {extract_path_for_unzip}  # Should show 'asl_alphabet_train' and 'asl_alphabet_test'
-# !ls -lh {os.path.join(extract_path_for_unzip, 'train', 'A')}  # Should list JPG images in class 'A'
-# !du -sh {os.path.join(extract_path_for_unzip, 'train')}  # Should show total size of training folder
-
 # %%
 # Cell 4: Downloading and Extracting the ASL Dataset
 # IMPORTANT: Make sure kaggle.json is already uploaded in /content/
