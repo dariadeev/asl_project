@@ -147,7 +147,8 @@ if uploaded_files:
 
             progress.progress((idx + 1) / total)
 
-    st.toast("✅ Prediction complete!", icon="👏")
+    if not any(st.session_state.get(f"img_{i}", False) for i in range(len(predictions))):
+        st.toast("✅ Prediction complete!", icon="👏")
 
     full_word = ''.join(predictions)
 
@@ -171,6 +172,7 @@ st.sidebar.info(
     "- Order matters (first letter uploaded = first letter predicted)\n"
 )
 st.sidebar.write(f"Supported classes: {NUM_CLASSES_ASL}")
+
 
 
 # import streamlit as st
