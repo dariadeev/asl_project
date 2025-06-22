@@ -54,7 +54,7 @@ class WNBModule(pl.LightningModule):
         pass
 
 # --- Model Path ---
-MODEL_STATE_DICT_PATH = "asl_resnet101_best_model.pt"
+MODEL_STATE_DICT_PATH = "asl_resnet_model.pt"
 
 # --- Load Model ---
 @st.cache_resource
